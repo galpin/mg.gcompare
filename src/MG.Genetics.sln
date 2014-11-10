@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Genetics", "MG.Genetics\MG.Genetics.csproj", "{FC9D0340-3ED2-444F-8980-E12A732610F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Genetics.Tests", "MG.Genetics.Tests\MG.Genetics.Tests.csproj", "{63A0A9B3-ADD8-4658-B88D-32BC4F391533}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Debug|x86.ActiveCfg = Debug|x86
+		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Debug|x86.Build.0 = Debug|x86
+		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Release|x86.ActiveCfg = Release|x86
+		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Release|x86.Build.0 = Release|x86
+		{FC9D0340-3ED2-444F-8980-E12A732610F1}.Debug|x86.ActiveCfg = Debug|x86
+		{FC9D0340-3ED2-444F-8980-E12A732610F1}.Debug|x86.Build.0 = Debug|x86
+		{FC9D0340-3ED2-444F-8980-E12A732610F1}.Release|x86.ActiveCfg = Release|x86
+		{FC9D0340-3ED2-444F-8980-E12A732610F1}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = MG.Genetics\MG.Genetics.csproj
+	EndGlobalSection
+EndGlobal
