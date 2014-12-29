@@ -4,11 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{FC9D0340-3ED2-444F-8980-E12A732610F1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>MG.Genetics</RootNamespace>
     <AssemblyName>23andme-cli</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <StartupObject>MG.Genetics.Program</StartupObject>
+    <StartupObject>
+    </StartupObject>
     <LangVersion>Experimental</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -65,7 +66,6 @@
     <Compile Include="Model\Chromosome.cs" />
     <Compile Include="Model\IO\PrimitiveHelper.cs" />
     <Compile Include="Model\SnpModelCollection.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\SnpModel.cs" />
     <Compile Include="Model\GenomeModel.cs" />
