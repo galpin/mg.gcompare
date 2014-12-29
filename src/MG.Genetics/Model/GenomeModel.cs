@@ -1,41 +1,52 @@
-﻿using System;
+﻿// Copyright (c) Martin Galpin 2014.
+//  
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+// 
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library. If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using MG.Common;
+using MG.Genetics.Model.IO;
 
 namespace MG.Genetics.Model
 {
     public class GenomeModel
     {
-        private readonly IReadOnlyList<SnpModel> _snp;
-
         public GenomeModel(IEnumerable<SnpModel> snp)
         {
-            _snp = snp.ToList();
+            Snp = new SnpModelCollection(snp);
         }
 
-        public IReadOnlyList<SnpModel> Snp
-        {
-            get { return _snp; }
-        }
+        public SnpModelCollection Snp { get; }
 
         public static GenomeModel Load(string path)
         {
-            // Guard.IsNotNullOrWhiteSpace(path, "path");
+            Guard.IsNotNull(path, nameof(path));
 
-            var snp =File.ReadLines(path)
-                .Where(x => !x.StartsWith("#"))
-                .Select(x =>
-                {
-                    var fields = x.Split('\t');
-                    return new SnpModel(
-                        fields[0],
-                        Int32.Parse(fields[1]),
-                        Int32.Parse(fields[2]),
-                        fields[3]);
-                });
+            var snp = File.ReadLines(path)
+                          .Where(x => !x.StartsWith("#"))
+                          .Select(x =>
+                          {
+                              var fields = x.Split('\t');
+                              return new SnpModel(
+                                  fields[0],
+                                  PrimitiveHelper.ParseChromosome(fields[1]),
+                                  Int32.Parse(fields[2]),
+                                  fields[3]);
+                          });
             return new GenomeModel(snp);
         }
     }
 }
-

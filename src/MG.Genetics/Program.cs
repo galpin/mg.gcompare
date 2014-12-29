@@ -26,7 +26,8 @@ namespace MG.Genetics
         /// </summary>
         /// <param name="path1">Path1.</param>
         /// <param name="path2">Path2.</param>
-        public void Compare(string path1, string path2)
+        /// <param name="verbose">Indicates whether or not raw data should be included.</param>
+        public void Compare(string path1, string path2, bool verbose = false)
         {
             // Guard.IsNotNullOrWhiteSpace(path1, "path1");
             // Guard.IsNotNullOrWhiteSpace(path2, "path2");
@@ -39,23 +40,24 @@ namespace MG.Genetics
 
             Console.WriteLine("Genome '{0}' contains {1} SNP's.", name1, genome1.Snp.Count);
             Console.WriteLine("Genome '{0}' contains {1} SNP's.", name2, genome1.Snp.Count);
-            Console.WriteLine();
 
             var common = genome1.Snp.Join(genome2.Snp,
-                x => x.Identifier,
-                x => x.Identifier,
+                x => x.Id + x.Genotype,
+                x => x.Id + x.Genotype,
                 (x, y) => x).ToList();
 
             Console.WriteLine("{0} SNP are common to both genomes.", common.Count);
-            WriteSnp(common);
+            if (verbose)
+            {
+                WriteSnp(common);
+            }
 
-            var unique1 = genome1.Snp.Except(genome2.Snp).ToList();
-            Console.WriteLine("{0} SNP exist only in {1}.", unique1.Count, name1);
-            WriteSnp(unique1);
-
-            var unique2 = genome1.Snp.Except(genome2.Snp).ToList();
-            Console.WriteLine("{0} SNP exist only in {1}.", unique2.Count, name2);
-            WriteSnp(unique2);
+            var unique = genome1.Snp.Except(genome2.Snp).ToList();
+            Console.WriteLine("{0} SNP exist only in {1}.", unique.Count, name1);
+            if (verbose)
+            {
+                WriteSnp(common);
+            }
         }
 
         private static void WriteSnp(IEnumerable<SnpModel> snps)
@@ -63,7 +65,7 @@ namespace MG.Genetics
             Console.WriteLine();
             foreach (var snp in snps)
             {
-                Console.WriteLine(@"{0} ({1})", snp.Identifier, snp.Genotype);
+                Console.WriteLine(@"{0} ({1})", snp.Id, snp.Genotype);
             }
             Console.WriteLine();
         }
