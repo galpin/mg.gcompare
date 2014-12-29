@@ -1,0 +1,6 @@
+[submodule "lib/mg.common"]
+	path = lib/mg.common
+	url = https://66laps@bitbucket.org/66laps/mg.common.git
+[submodule "lib/mg.framework"]
+	path = lib/mg.framework
+	url = https://github.com/galpin/mg.framework.git
