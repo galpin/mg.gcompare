@@ -32,6 +32,7 @@ obj/
 Ankh.NoLoad
 GeneratedAssemblyInfo.cs
 dist/
+*.sln.ide
 
 #MonoDevelop
 *.pidb
