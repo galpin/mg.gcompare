@@ -4,18 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         Title="{Binding DisplayName}"
         Height="600"
         Width="800">
-    <DockPanel LastChildFill="True">
-        <telerik:RadMenu DockPanel.Dock="Top">
-            <telerik:RadMenuItem Header="File">
-                <telerik:RadMenuItem Header="Open Dataset A..."/>
-                <telerik:RadMenuItem Header="Open Dataset B..."/>
-                <telerik:RadMenuItem IsSeparator="True"/>
-                <telerik:RadMenuItem Header="Exit"/>
-            </telerik:RadMenuItem>
-        </telerik:RadMenu>
+  <telerik:RadBusyIndicator IsBusy="{Binding IsBusy}"
+                            IsIndeterminate="True">
+    <DockPanel LastChildFill="True"
+               Background="{telerik:VisualStudio2013Resource ResourceKey=PrimaryBrush}">
+      <telerik:RadMenu DockPanel.Dock="Top">
+        <telerik:RadMenuItem Header="File">
+          <telerik:RadMenuItem Header="Open..."
+                               cal:Message.Attach="[Event Click] = [Action Open]" />
+          <telerik:RadMenuItem IsSeparator="True" />
+          <telerik:RadMenuItem Header="Exit"
+                               cal:Message.Attach="[Event Click] = [Action Exit]" />
+        </telerik:RadMenuItem>
+      </telerik:RadMenu>
+
+      <ContentControl cal:View.Model="{Binding ActiveItem}" />
     </DockPanel>
+  </telerik:RadBusyIndicator>
 </Window>
