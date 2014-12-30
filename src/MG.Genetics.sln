@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Common", "..\lib\mg.fram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Testing", "..\lib\mg.framework\src\MG.Testing\MG.Testing\MG.Testing\MG.Testing.csproj", "{AEF4C343-2AC2-498A-8944-14CF2933284A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.GCompare.UI", "MG.GCompare.UI\MG.GCompare.UI.csproj", "{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.GCompare.UI.Tests", "MG.GCompare.UI.Tests\MG.GCompare.UI.Tests.csproj", "{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,14 @@ Global
 		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@
     <ProjectGuid>{FC9D0340-3ED2-444F-8980-E12A732610F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MG.Genetics</RootNamespace>
-    <AssemblyName>23andme-cli</AssemblyName>
+    <AssemblyName>MG.Genetics</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <StartupObject>
     </StartupObject>
@@ -43,7 +43,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>0</WarningLevel>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
@@ -54,7 +53,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
