@@ -19,16 +19,35 @@ using Xunit;
 
 namespace MG.Genetics.Model
 {
-    public class GenomeModelTests
+    public class SnpModelCollectionTests
     {
         [Fact]
         public void Ctor_CorrectlyInitializesMembers_Test()
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
+            var expected = new[] {TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2")};
 
-            var actual = new GenomeModel(expectedSnp);
+            var actual = new SnpModelCollection(expected);
 
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
+            Assert.True(actual.SequenceEqual(actual));
+        }
+
+        [Fact]
+        public void GetByIdOrDefault_WhenSnpExists_ReturnsSnpModel_Test()
+        {
+            var expected = TestSnpModel.Create();
+
+            var collection = new SnpModelCollection(new[] {expected});
+            var actual = collection.GetByIdOrDefault(expected.Id);
+
+            Assert.Same(expected, actual);
+        }
+
+        [Fact]
+        public void GetByIdOrDefault_WhenSnpDoesNotExists_ReturnsNull_Test()
+        {
+            var collection = new SnpModelCollection(new SnpModel[0]);
+
+            Assert.Null(collection.GetByIdOrDefault("rsXXXX"));
         }
     }
 }

@@ -19,16 +19,30 @@ using System.Linq;
 
 namespace MG.Genetics.Model
 {
+    /// <summary>
+    /// Provides a read-only collection of <see cref="SnpModel"/> instances. This class cannot be inherited.
+    /// </summary>
     public class SnpModelCollection : ReadOnlyCollection<SnpModel>
     {
         private readonly Dictionary<string, SnpModel> _snpById;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SnpModelCollection"/> class.
+        /// </summary>
+        /// <param name="list">The sequence of <see cref="SnpModel"/> instances from which to copy items.</param>
         public SnpModelCollection(IEnumerable<SnpModel> list)
             : base(new List<SnpModel>(list))
         {
             _snpById = Items.ToDictionary(x => x.Id);
         }
 
+        /// <summary>
+        /// Gets an <see cref="SnpModel"/> with the specified identifier or <see langword="null"/> if no SNP exists.
+        /// </summary>
+        /// <param name="id">The SNP identifier.</param>
+        /// <returns>
+        /// The <see cref="SnpModel"/> identified by <paramref name="id"/>; otherwise <see langword="null"/>.
+        /// </returns>
         public SnpModel GetByIdOrDefault(string id)
         {
             SnpModel model;

@@ -13,22 +13,15 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using System.Linq;
-using MG.Genetics.Support;
-using Xunit;
+using MG.Genetics.Model;
 
-namespace MG.Genetics.Model
+namespace MG.Genetics.Support
 {
-    public class GenomeModelTests
+    internal static class TestSnpModel
     {
-        [Fact]
-        public void Ctor_CorrectlyInitializesMembers_Test()
+        public static SnpModel Create(string id = null)
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
-
-            var actual = new GenomeModel(expectedSnp);
-
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
+            return new SnpModel(id ?? "rs12564807", Chromosome.One, 734462, "AA");
         }
     }
 }

@@ -32,6 +32,9 @@ namespace MG.Genetics.Model
         /// <param name="genotype">
         /// The genotype call oriented with respect to the plus strand on the human reference sequence.
         /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when <paramref name="id"/> or <paramref name="genotype"/> is <see langword="null"/>.
+        /// </exception>
         public SnpModel(
             string id,
             Chromosome location,

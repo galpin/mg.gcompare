@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Model\GenomeModelTests.cs" />
     <Compile Include="Model\IO\PrimitiveHelperTests.cs" />
+    <Compile Include="Model\SnpModelCollectionTests.cs" />
+    <Compile Include="Support\TestSnpModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
