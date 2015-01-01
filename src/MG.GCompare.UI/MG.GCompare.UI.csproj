@@ -43,6 +43,9 @@
     <Reference Include="Caliburn.Micro.Platform">
       <HintPath>..\packages\Caliburn.Micro.2.0.1\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -90,6 +93,7 @@
     <Compile Include="Comparison\SnpCollectionViewSource.cs" />
     <Compile Include="Comparison\SnpViewModel.cs" />
     <Compile Include="Comparison\SnpViewModelCollection.cs" />
+    <Compile Include="NamespaceModule.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="IShell.cs" />
@@ -138,6 +142,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\lib\mg.framework\src\MG.Caliburn.Micro\MG.Caliburn.Micro\MG.Caliburn.Micro.csproj">
+      <Project>{21a82abc-d161-4e7f-b0a9-880afbb0ec24}</Project>
+      <Name>MG.Caliburn.Micro</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\lib\mg.framework\src\MG.Common\MG.Common\MG.Common.csproj">
       <Project>{97A80A0F-3101-44B7-9821-CF8D81080296}</Project>
       <Name>MG.Common</Name>

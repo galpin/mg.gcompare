@@ -13,21 +13,21 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using System.Collections.Generic;
-using Caliburn.Micro.MG;
+using Caliburn.Micro;
 using Ninject.Modules;
 
 namespace MG.GCompare.UI
 {
     /// <summary>
-    /// Provides the application bootstrapper. This class is cannot be inherited.
+    /// Provides bindings for this namespace. This class cannot be inherited.
     /// </summary>
-    public sealed class AppBootstrapper : NinjectBootstrapper<IShell>
+    public sealed class NamespaceModule : NinjectModule
     {
         /// <inheritdoc/>
-        protected override IEnumerable<NinjectModule> GetModules()
+        public override void Load()
         {
-            yield return new NamespaceModule();
+            Bind<IWindowManager>().To<WindowManager>();
+            Bind<IShell>().To<ShellViewModel>();
         }
     }
 }
