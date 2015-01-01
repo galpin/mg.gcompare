@@ -22,6 +22,21 @@ namespace MG.GCompare.UI.Comparison
     public class SnpViewModelTests
     {
         [Fact]
+        public void Ctor_WhenAIsNull_CorrectlyInitializesMembers_Test()
+        {
+            var b = TestSnpModel.Create();
+
+            var actual = new SnpViewModel(null, b);
+
+            Assert.Equal(b.Id, actual.Id);
+            Assert.Equal(b.Location, actual.Location);
+            Assert.Equal(b.Position, actual.Position);
+            Assert.Equal(b.Genotype, actual.GenotypeB);
+            Assert.Null(actual.GenotypeA);
+            Assert.Null(actual.IsSame);
+        }
+
+        [Fact]
         public void Ctor_WhenBIsNull_CorrectlyInitializesMembers_Test()
         {
             var a = TestSnpModel.Create();
@@ -32,6 +47,7 @@ namespace MG.GCompare.UI.Comparison
             Assert.Equal(a.Location, actual.Location);
             Assert.Equal(a.Position, actual.Position);
             Assert.Equal(a.Genotype, actual.GenotypeA);
+            Assert.Null(actual.GenotypeB);
             Assert.Null(actual.IsSame);
         }
 
@@ -68,7 +84,7 @@ namespace MG.GCompare.UI.Comparison
         }
 
         [Fact]
-        public void Ctor_ThrowsIfAIsNull_Test()
+        public void Ctor_ThrowsIfBothIsNull_Test()
         {
             Assert.Throws<ArgumentNullException>(() => new SnpViewModel(null, null));
         }

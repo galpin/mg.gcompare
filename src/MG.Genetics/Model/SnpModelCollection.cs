@@ -49,5 +49,21 @@ namespace MG.Genetics.Model
             _snpById.TryGetValue(id, out model);
             return model;
         }
+
+        /// <summary>
+        /// Attempts to get an <see cref="SnpModel"/> with the specified identifier and returns a value whether or not
+        /// it exists.
+        /// </summary>
+        /// <param name="id">The SNP identifier.</param>
+        /// <param name="model">When this method returns; contains the model identified by <paramref name="id"/> or
+        /// <see langword="null"/> if no SNP exists.</param>
+        /// <returns>
+        /// <see langword="true"/> is an SNP with the identifier <paramref name="id"/> exists;
+        /// otherwise <see langword="false"/>.
+        /// </returns>
+        public bool TryGetById(string id, out SnpModel model)
+        {
+            return _snpById.TryGetValue(id, out model);
+        }
     }
 }

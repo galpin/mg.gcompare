@@ -13,6 +13,7 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Diagnostics;
 using MG.Common;
 using MG.Genetics.Model;
@@ -27,25 +28,29 @@ namespace MG.GCompare.UI.Comparison
         /// <summary>
         /// Initializes a new instance of the <see cref="SnpViewModel"/> class.
         /// </summary>
-        /// <param name="a">The <see cref="SnpModel"/> that forms the basis of the comparison.</param>
+        /// <param name="a">The <see cref="SnpModel"/> that forms the basis of the comparison
+        /// (can be <see langword="null"/>).</param>
         /// <param name="b">The <see cref="SnpModel"/> that is compared to <paramref name="b"/> 
         /// (can be <see langword="null"/>).</param>
         /// <exception cref="System.ArgumentNullException">
-        /// Thrown when <paramref name="a"/> is <see langword="null"/>.
+        /// Thrown when <paramref name="a"/> and <paramref name="b"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="System.ArgumentOutOfRangeException">
         /// Thrown when <paramref name="a"/> and <paramref name="b"/> do not share the same identifier.
         /// </exception>
         public SnpViewModel(SnpModel a, SnpModel b)
         {
-            Guard.IsNotNull(a, nameof(a));
-            Guard.IsInRange(b == null || a.Id == b.Id, nameof(a));
+            if (a == null && b == null)
+            {
+                throw new ArgumentNullException("Must specify at least one SnpModel");
+            }
+            Guard.IsInRange((a == null || b == null) || a.Id == b.Id, nameof(a));
 
-            Id = a.Id;
-            Location = a.Location;
-            IsSame = b == null ? (bool?) null : a.Genotype == b.Genotype;
-            Position = a.Position;
-            GenotypeA = a.Genotype;
+            Id = a?.Id ?? b?.Id;
+            Location = (a?.Location ?? b?.Location).Value;
+            IsSame = a == null || b == null ? (bool?) null : a.Genotype == b.Genotype;
+            Position = (a?.Position ?? b?.Position).Value;
+            GenotypeA = a?.Genotype;
             GenotypeB = b?.Genotype;
         }
 
