@@ -59,7 +59,7 @@
     <Compile Include="Comparison\ComparisonViewModelTests.cs" />
     <Compile Include="Comparison\SnpViewModelCollectionTests.cs" />
     <Compile Include="Comparison\SnpViewModelTests.cs" />
-    <Compile Include="ShellViewModelTests.cs" />
+    <Compile Include="Shell\ShellViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\TestGenomeModel.cs" />
     <Compile Include="Support\TestSnpModel.cs" />

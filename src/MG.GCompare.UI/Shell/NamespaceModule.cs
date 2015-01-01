@@ -13,12 +13,21 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-namespace MG.GCompare.UI
+using Caliburn.Micro;
+using Ninject.Modules;
+
+namespace MG.GCompare.UI.Shell
 {
     /// <summary>
-    /// Provides the application shell.
+    /// Provides bindings for this namespace. This class cannot be inherited.
     /// </summary>
-    public interface IShell
+    public sealed class NamespaceModule : NinjectModule
     {
+        /// <inheritdoc/>
+        public override void Load()
+        {
+            Bind<IWindowManager>().To<WindowManager>();
+            Bind<IShell>().To<ShellViewModel>();
+        }
     }
 }

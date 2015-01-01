@@ -13,21 +13,18 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using Caliburn.Micro;
-using Ninject.Modules;
+using Xunit;
 
-namespace MG.GCompare.UI
+namespace MG.GCompare.UI.Shell
 {
-    /// <summary>
-    /// Provides bindings for this namespace. This class cannot be inherited.
-    /// </summary>
-    public sealed class NamespaceModule : NinjectModule
+    public class ShellViewModelTests
     {
-        /// <inheritdoc/>
-        public override void Load()
+        [Fact]
+        public void Ctor_CorrectlyInitializesMembers_Test()
         {
-            Bind<IWindowManager>().To<WindowManager>();
-            Bind<IShell>().To<ShellViewModel>();
+            var actual = new ShellViewModel();
+
+            Assert.Equal("MG.GCompare", actual.DisplayName);
         }
     }
 }

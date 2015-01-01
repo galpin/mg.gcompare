@@ -21,7 +21,7 @@ using MG.Common;
 using MG.GCompare.UI.Comparison;
 using MG.GCompare.UI.Support;
 
-namespace MG.GCompare.UI
+namespace MG.GCompare.UI.Shell
 {
     /// <summary>
     /// A default <see cref="IShell"/> implementation. This class cannot be inherited.

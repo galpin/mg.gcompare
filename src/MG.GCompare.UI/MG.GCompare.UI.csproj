@@ -93,10 +93,10 @@
     <Compile Include="Comparison\SnpCollectionViewSource.cs" />
     <Compile Include="Comparison\SnpViewModel.cs" />
     <Compile Include="Comparison\SnpViewModelCollection.cs" />
-    <Compile Include="NamespaceModule.cs" />
-    <Compile Include="ShellViewModel.cs" />
+    <Compile Include="Shell\NamespaceModule.cs" />
+    <Compile Include="Shell\ShellViewModel.cs" />
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="IShell.cs" />
+    <Compile Include="Shell\IShell.cs" />
     <Compile Include="Support\IGenomeModelLoader.cs" />
     <Compile Include="Support\StandardGenomeModelLoader.cs" />
     <Page Include="Comparison\ComparisonView.xaml">
@@ -107,7 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ShellView.xaml">
+    <Page Include="Shell\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,6 +15,7 @@
 
 using System.Collections.Generic;
 using Caliburn.Micro.MG;
+using MG.GCompare.UI.Shell;
 using Ninject.Modules;
 
 namespace MG.GCompare.UI

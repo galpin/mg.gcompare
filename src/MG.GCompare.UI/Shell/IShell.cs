@@ -13,18 +13,12 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using Xunit;
-
-namespace MG.GCompare.UI
+namespace MG.GCompare.UI.Shell
 {
-    public class ShellViewModelTests
+    /// <summary>
+    /// Provides the application shell.
+    /// </summary>
+    public interface IShell
     {
-        [Fact]
-        public void Ctor_CorrectlyInitializesMembers_Test()
-        {
-            var actual = new ShellViewModel();
-
-            Assert.Equal("MG.GCompare", actual.DisplayName);
-        }
     }
 }
