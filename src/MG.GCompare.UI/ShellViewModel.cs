@@ -13,9 +13,11 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.IO;
 using System.Windows;
 using Caliburn.Micro;
+using MG.Common;
 using MG.GCompare.UI.Comparison;
 using MG.GCompare.UI.Support;
 
@@ -55,17 +57,12 @@ namespace MG.GCompare.UI
         /// </summary>
         public async void Open()
         {
-            try
+            using (BeginBusy())
             {
-                IsBusy = true;
                 var root = @"C:\Users\galpin\Dropbox\Data\genetics\";
                 var a = await _loader.LoadAsync(Path.Combine(root, @"genome_Martin_Galpin_Full_20141109003835.txt"));
                 var b = await _loader.LoadAsync(Path.Combine(root, @"genome_Carina_Lilley_Full_20141109003848.txt"));
                 ActivateItem(new ComparisonViewModel(a, b));
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
 
@@ -75,6 +72,12 @@ namespace MG.GCompare.UI
         public void Exit()
         {
             Application.Current.Shutdown();
+        }
+
+        private IDisposable BeginBusy()
+        {
+            IsBusy = true;
+            return new DisposableAction(() => IsBusy = false);
         }
     }
 }
