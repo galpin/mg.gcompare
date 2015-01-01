@@ -39,11 +39,11 @@ namespace MG.GCompare.UI.Comparison
         public SnpViewModel(SnpModel a, SnpModel b)
         {
             Guard.IsNotNull(a, nameof(a));
-            Guard.IsInRange(b != null && a.Id == b.Id, nameof(a));
+            Guard.IsInRange(b == null || a.Id == b.Id, nameof(a));
 
             Id = a.Id;
             Location = a.Location;
-            IsSame = a.Genotype == b?.Genotype;
+            IsSame = b == null ? (bool?) null : a.Genotype == b.Genotype;
             Position = a.Position;
             GenotypeA = a.Genotype;
             GenotypeB = b?.Genotype;
