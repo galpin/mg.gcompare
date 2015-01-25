@@ -1,4 +1,4 @@
-﻿// Copyright (c) Martin Galpin 2014.
+// Copyright (c) Martin Galpin 2014.
 //  
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -13,23 +13,16 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using Caliburn.Micro;
-using Caliburn.Micro.MG;
-using Ninject.Modules;
+using System.ComponentModel;
 
-namespace MG.GCompare.UI.Shell
+namespace MG.GCompare.UI.Support
 {
-    /// <summary>
-    /// Provides bindings for this namespace. This class cannot be inherited.
-    /// </summary>
-    public sealed class NamespaceModule : NinjectModule
+    internal static class PropertyChangedObserver
     {
-        /// <inheritdoc/>
-        public override void Load()
+        public static PropertyChangeObserver<TModel> CreatePropertyChangedObserver<TModel>(this TModel model)
+            where TModel : INotifyPropertyChanged
         {
-            Bind<IWindowManager>().To<WindowManager>();
-            Bind<IDialogManager>().To<StandardDialogManager>();
-            Bind<IShell>().To<ShellViewModel>();
+            return new PropertyChangeObserver<TModel>(model);
         }
     }
 }

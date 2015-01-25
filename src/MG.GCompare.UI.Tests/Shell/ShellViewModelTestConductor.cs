@@ -1,4 +1,4 @@
-﻿// Copyright (c) Martin Galpin 2014.
+// Copyright (c) Martin Galpin 2014.
 //  
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -13,23 +13,23 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using Caliburn.Micro;
-using Caliburn.Micro.MG;
-using Ninject.Modules;
+using MG.GCompare.UI.Mocks;
 
 namespace MG.GCompare.UI.Shell
 {
-    /// <summary>
-    /// Provides bindings for this namespace. This class cannot be inherited.
-    /// </summary>
-    public sealed class NamespaceModule : NinjectModule
+    internal sealed class ShellViewModelTestConductor
     {
-        /// <inheritdoc/>
-        public override void Load()
+        public ShellViewModelTestConductor()
         {
-            Bind<IWindowManager>().To<WindowManager>();
-            Bind<IDialogManager>().To<StandardDialogManager>();
-            Bind<IShell>().To<ShellViewModel>();
+            DialogManager = new MockDialogManager();
+            Loader = new MockGenomeModelLoader();
+            Shell = new ShellViewModel(DialogManager.Object, Loader.Object);
         }
+
+        public MockGenomeModelLoader Loader { get; }
+
+        public ShellViewModel Shell { get; }
+
+        public MockDialogManager DialogManager { get; }
     }
 }

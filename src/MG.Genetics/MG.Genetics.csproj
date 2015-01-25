@@ -55,6 +55,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MG.Common, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mg.framework\MG.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="AK.CmdLine">
       <HintPath>..\..\lib\ak.cmdline\AK.CmdLine.dll</HintPath>
@@ -67,12 +71,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\SnpModel.cs" />
     <Compile Include="Model\GenomeModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\lib\mg.framework\src\MG.Common\MG.Common\MG.Common.csproj">
-      <Project>{97a80a0f-3101-44b7-9821-cf8d81080296}</Project>
-      <Name>MG.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

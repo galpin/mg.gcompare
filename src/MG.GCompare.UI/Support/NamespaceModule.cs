@@ -13,11 +13,9 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using Caliburn.Micro;
-using Caliburn.Micro.MG;
 using Ninject.Modules;
 
-namespace MG.GCompare.UI.Shell
+namespace MG.GCompare.UI.Support
 {
     /// <summary>
     /// Provides bindings for this namespace. This class cannot be inherited.
@@ -27,9 +25,7 @@ namespace MG.GCompare.UI.Shell
         /// <inheritdoc/>
         public override void Load()
         {
-            Bind<IWindowManager>().To<WindowManager>();
-            Bind<IDialogManager>().To<StandardDialogManager>();
-            Bind<IShell>().To<ShellViewModel>();
+            Bind<IGenomeModelLoader>().To<StandardGenomeModelLoader>();
         }
     }
 }

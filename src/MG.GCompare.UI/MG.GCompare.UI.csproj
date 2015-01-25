@@ -106,6 +106,7 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Shell\IShell.cs" />
     <Compile Include="Support\IGenomeModelLoader.cs" />
+    <Compile Include="Support\NamespaceModule.cs" />
     <Compile Include="Support\StandardGenomeModelLoader.cs" />
     <Page Include="Comparison\ComparisonView.xaml">
       <SubType>Designer</SubType>

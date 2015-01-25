@@ -1,4 +1,4 @@
-﻿// Copyright (c) Martin Galpin 2014.
+// Copyright (c) Martin Galpin 2014.
 //  
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -13,23 +13,27 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using Caliburn.Micro;
+using System;
+using System.Linq.Expressions;
 using Caliburn.Micro.MG;
-using Ninject.Modules;
+using Moq;
 
-namespace MG.GCompare.UI.Shell
+namespace MG.GCompare.UI.Mocks
 {
-    /// <summary>
-    /// Provides bindings for this namespace. This class cannot be inherited.
-    /// </summary>
-    public sealed class NamespaceModule : NinjectModule
+    internal sealed class MockDialogManager
     {
-        /// <inheritdoc/>
-        public override void Load()
+        private readonly Mock<IDialogManager> _mock = new Mock<IDialogManager>();
+
+        public IDialogManager Object => _mock.Object;
+
+        public void AssertOpenFileInvoked(Expression<Func<OpenFileDialogOptions, bool>> match, Times? times = null)
         {
-            Bind<IWindowManager>().To<WindowManager>();
-            Bind<IDialogManager>().To<StandardDialogManager>();
-            Bind<IShell>().To<ShellViewModel>();
+            _mock.Verify(x => x.OpenFile(It.Is(match)), times ?? Times.Once());
+        }
+
+        public void SetupOpenFileToReturn(Expression<Func<OpenFileDialogOptions, bool>> match, string returnValue)
+        {
+            _mock.Setup(x => x.OpenFile(It.Is(match))).Returns(returnValue);
         }
     }
 }

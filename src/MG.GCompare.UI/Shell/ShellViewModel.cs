@@ -14,9 +14,9 @@
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.IO;
 using System.Windows;
 using Caliburn.Micro;
+using Caliburn.Micro.MG;
 using MG.Common;
 using MG.GCompare.UI.Comparison;
 using MG.GCompare.UI.Support;
@@ -28,14 +28,24 @@ namespace MG.GCompare.UI.Shell
     /// </summary>
     public sealed class ShellViewModel : Conductor<IComparisonViewModel>.Collection.OneActive, IShell
     {
-        private readonly IGenomeModelLoader _loader = new StandardGenomeModelLoader();
+        private readonly IDialogManager _dialogManager;
+        private readonly IGenomeModelLoader _loader;
         private bool _isBusy;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
         /// </summary>
-        public ShellViewModel()
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when <paramref name="dialogManager"/> is <see langword="null"/>.
+        /// </exception>
+        public ShellViewModel(IDialogManager dialogManager, IGenomeModelLoader loader)
         {
+            Guard.IsNotNull(dialogManager, nameof(dialogManager));
+            Guard.IsNotNull(loader, nameof(loader));
+
+            _dialogManager = dialogManager;
+            _loader = loader;
+
             DisplayName = "MG.GCompare";
         }
 
@@ -53,16 +63,21 @@ namespace MG.GCompare.UI.Shell
         }
 
         /// <summary>
-        /// Prompts to open a pair of datasets.
+        /// Prompts the user to open a pair of datasets.
         /// </summary>
         public async void Open()
         {
+            var a = OpenFile("Open Genome A");
+            if (a == null)
+            {
+                return;
+            }
+            var b = OpenFile("Open Genome B");
             using (BeginBusy())
             {
-                var root = @"C:\Users\galpin\Dropbox\Data\genetics\";
-                var a = await _loader.LoadAsync(Path.Combine(root, @"genome_Martin_Galpin_Full_20141109003835.txt"));
-                var b = await _loader.LoadAsync(Path.Combine(root, @"genome_Carina_Lilley_Full_20141109003848.txt"));
-                ActivateItem(new ComparisonViewModel(a, b));
+                ActivateItem(new ComparisonViewModel(
+                    await _loader.LoadAsync(a),
+                    b == null ? null : await _loader.LoadAsync(b)));
             }
         }
 
@@ -72,6 +87,16 @@ namespace MG.GCompare.UI.Shell
         public void Exit()
         {
             Application.Current.Shutdown();
+        }
+
+        private string OpenFile(string title)
+        {
+            return _dialogManager.OpenFile(new OpenFileDialogOptions
+            {
+                Title = title,
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            });
         }
 
         private IDisposable BeginBusy()

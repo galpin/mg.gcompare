@@ -56,6 +56,14 @@
     <Compile Include="Support\TestSnpModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MG.Common, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mg.framework\MG.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="MG.Testing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mg.framework\MG.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="xunit, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,14 +78,6 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\mg.framework\src\MG.Common\MG.Common\MG.Common.csproj">
-      <Project>{97a80a0f-3101-44b7-9821-cf8d81080296}</Project>
-      <Name>MG.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\lib\mg.framework\src\MG.Testing\MG.Testing\MG.Testing\MG.Testing.csproj">
-      <Project>{aef4c343-2ac2-498a-8944-14cf2933284a}</Project>
-      <Name>MG.Testing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MG.Genetics\MG.Genetics.csproj">
       <Project>{FC9D0340-3ED2-444F-8980-E12A732610F1}</Project>
       <Name>MG.Genetics</Name>

@@ -28,7 +28,8 @@ namespace MG.GCompare.UI
         /// <inheritdoc/>
         protected override IEnumerable<NinjectModule> GetModules()
         {
-            yield return new NamespaceModule();
+            yield return new Shell.NamespaceModule();
+            yield return new Support.NamespaceModule();
         }
     }
 }
