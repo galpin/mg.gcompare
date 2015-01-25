@@ -26,10 +26,10 @@ namespace MG.GCompare.UI.Shell
             Shell = new ShellViewModel(DialogManager.Object, Loader.Object);
         }
 
+        public MockDialogManager DialogManager { get; }
+
         public MockGenomeModelLoader Loader { get; }
 
         public ShellViewModel Shell { get; }
-
-        public MockDialogManager DialogManager { get; }
     }
 }
