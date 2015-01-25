@@ -4,3 +4,6 @@
 [submodule "lib/mg.framework"]
 	path = lib/mg.framework
 	url = https://github.com/galpin/mg.framework.git
+[submodule "lib/telerik-bin"]
+	path = lib/telerik-bin
+	url = https://github.com/galpin/telerik-bin.git

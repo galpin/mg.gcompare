@@ -13,22 +13,23 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using System.Linq;
-using MG.Genetics.Support;
-using Xunit;
+using System.Collections.Generic;
+using Caliburn.Micro.MG;
+using MG.GCompare.UI.Shell;
+using Ninject.Modules;
 
-namespace MG.Genetics.Model
+namespace MG.GCompare.UI
 {
-    public class GenomeModelTests
+    /// <summary>
+    /// Provides the application bootstrapper. This class is cannot be inherited.
+    /// </summary>
+    public sealed class AppBootstrapper : NinjectBootstrapper<IShell>
     {
-        [Fact]
-        public void Ctor_CorrectlyInitializesMembers_Test()
+        /// <inheritdoc/>
+        protected override IEnumerable<NinjectModule> GetModules()
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
-
-            var actual = new GenomeModel(expectedSnp);
-
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
+            yield return new Shell.NamespaceModule();
+            yield return new Support.NamespaceModule();
         }
     }
 }

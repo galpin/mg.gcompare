@@ -14,11 +14,19 @@
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace MG.Genetics.Model.IO
 {
     internal static class PrimitiveHelper
     {
+        public static GenomeModel Load(string path)
+        {
+            return new GenomeModel(ReadSnp(path));
+        }
+
         public static Chromosome ParseChromosome(string s)
         {
             switch (s)
@@ -76,6 +84,21 @@ namespace MG.Genetics.Model.IO
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static IEnumerable<SnpModel> ReadSnp(string path)
+        {
+            return File.ReadLines(path)
+                       .Where(x => !x.StartsWith("#"))
+                       .Select(x =>
+                       {
+                           var fields = x.Split('\t');
+                           return new SnpModel(
+                               fields[0],
+                               ParseChromosome(fields[1]),
+                               Int32.Parse(fields[2]),
+                               fields[3]);
+                       });
         }
     }
 }

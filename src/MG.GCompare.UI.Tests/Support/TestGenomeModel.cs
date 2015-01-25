@@ -1,4 +1,4 @@
-﻿// Copyright (c) Martin Galpin 2014.
+// Copyright (c) Martin Galpin 2014.
 //  
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -14,21 +14,25 @@
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 using System.Linq;
-using MG.Genetics.Support;
-using Xunit;
+using MG.Genetics.Model;
 
-namespace MG.Genetics.Model
+namespace MG.GCompare.UI.Support
 {
-    public class GenomeModelTests
+    internal static class TestGenomeModel
     {
-        [Fact]
-        public void Ctor_CorrectlyInitializesMembers_Test()
+        public static GenomeModel Create()
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
+            return new GenomeModel(new[]
+            {
+                TestSnpModel.Create("rs001"),
+                TestSnpModel.Create("rs002"),
+                TestSnpModel.Create("rs003"),
+            });
+        }
 
-            var actual = new GenomeModel(expectedSnp);
-
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
+        public static GenomeModel Create(params string[] id)
+        {
+            return new GenomeModel(id.Select(x => TestSnpModel.Create(x)));
         }
     }
 }

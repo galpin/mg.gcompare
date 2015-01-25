@@ -13,22 +13,19 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using System.Linq;
-using MG.Genetics.Support;
-using Xunit;
+using Ninject.Modules;
 
-namespace MG.Genetics.Model
+namespace MG.GCompare.UI.Support
 {
-    public class GenomeModelTests
+    /// <summary>
+    /// Provides bindings for this namespace. This class cannot be inherited.
+    /// </summary>
+    public sealed class NamespaceModule : NinjectModule
     {
-        [Fact]
-        public void Ctor_CorrectlyInitializesMembers_Test()
+        /// <inheritdoc/>
+        public override void Load()
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
-
-            var actual = new GenomeModel(expectedSnp);
-
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
+            Bind<IGenomeModelLoader>().To<StandardGenomeModelLoader>();
         }
     }
 }

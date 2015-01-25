@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:comparison="clr-namespace:MG.GCompare.UI.Comparison"
+                    xmlns:cal="http://www.caliburnproject.org">
+
+  <ObjectDataProvider x:Key="Comparison.DisplayModeDataProvider"
+                      MethodName="GetValues"
+                      ObjectType="{x:Type sys:Enum}">
+    <ObjectDataProvider.MethodParameters>
+      <x:Type TypeName="comparison:DisplayMode" />
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
+
+  <Style x:Key="Comparison.HyperlinkButton"
+         TargetType="Button">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <ContentPresenter />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <DataTemplate x:Key="Comparison.SnpInfoRowDetailsTemplate">
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="{Binding Id}" />
+      <Button Style="{StaticResource Comparison.HyperlinkButton}"
+              cal:Message.Attach="[Action OpenBrowser]">
+        <TextBlock>see (<Hyperlink>SNPedia</Hyperlink>)</TextBlock>
+      </Button>
+    </StackPanel>
+  </DataTemplate>
+
+</ResourceDictionary>

@@ -13,22 +13,23 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using System.Linq;
-using MG.Genetics.Support;
-using Xunit;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
-namespace MG.Genetics.Model
+namespace MG.GCompare.UI.Comparison
 {
-    public class GenomeModelTests
+    /// <summary>
+    /// Provides a collection of <see cref="SnpViewModel"/> instances. This class cannot be inherited.
+    /// </summary>
+    public sealed class SnpViewModelCollection : ReadOnlyCollection<SnpViewModel>
     {
-        [Fact]
-        public void Ctor_CorrectlyInitializesMembers_Test()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SnpViewModelCollection"/> class.
+        /// </summary>
+        /// <param name="source">The sequence of <see cref="SnpViewModel"/> instances from which to copy items.</param>
+        public SnpViewModelCollection(IEnumerable<SnpViewModel> source)
+            : base(new ObservableCollection<SnpViewModel>(source))
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
-
-            var actual = new GenomeModel(expectedSnp);
-
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
         }
     }
 }

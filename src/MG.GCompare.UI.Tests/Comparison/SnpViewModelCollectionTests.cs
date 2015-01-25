@@ -14,21 +14,25 @@
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 using System.Linq;
-using MG.Genetics.Support;
+using MG.GCompare.UI.Support;
 using Xunit;
 
-namespace MG.Genetics.Model
+namespace MG.GCompare.UI.Comparison
 {
-    public class GenomeModelTests
+    public class SnpViewModelCollectionTests
     {
         [Fact]
         public void Ctor_CorrectlyInitializesMembers_Test()
         {
-            var expectedSnp = new[] { TestSnpModel.Create("rsXXX1"), TestSnpModel.Create("rsXXX2") };
+            var expected = new[]
+            {
+                new SnpViewModel(TestSnpModel.Create(), null),
+                new SnpViewModel(TestSnpModel.Create(), null),
+            };
 
-            var actual = new GenomeModel(expectedSnp);
+            var actual = new SnpViewModelCollection(expected);
 
-            Assert.True(expectedSnp.SequenceEqual(actual.Snp));
+            Assert.True(expected.SequenceEqual(actual));
         }
     }
 }
