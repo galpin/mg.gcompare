@@ -43,6 +43,14 @@
     <Reference Include="Caliburn.Micro.Platform">
       <HintPath>..\packages\Caliburn.Micro.2.0.1\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="MG.Caliburn.Micro, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mg.framework\MG.Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="MG.Common, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mg.framework\MG.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -142,14 +150,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\mg.framework\src\MG.Caliburn.Micro\MG.Caliburn.Micro\MG.Caliburn.Micro.csproj">
-      <Project>{21a82abc-d161-4e7f-b0a9-880afbb0ec24}</Project>
-      <Name>MG.Caliburn.Micro</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\lib\mg.framework\src\MG.Common\MG.Common\MG.Common.csproj">
-      <Project>{97A80A0F-3101-44B7-9821-CF8D81080296}</Project>
-      <Name>MG.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MG.Genetics\MG.Genetics.csproj">
       <Project>{FC9D0340-3ED2-444F-8980-E12A732610F1}</Project>
       <Name>MG.Genetics</Name>

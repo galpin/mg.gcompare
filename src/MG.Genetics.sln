@@ -14,17 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B312C9
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{6C9D39B1-B59C-485C-9FD3-88610300A85B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Common", "..\lib\mg.framework\src\MG.Common\MG.Common\MG.Common.csproj", "{97A80A0F-3101-44B7-9821-CF8D81080296}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Testing", "..\lib\mg.framework\src\MG.Testing\MG.Testing\MG.Testing\MG.Testing.csproj", "{AEF4C343-2AC2-498A-8944-14CF2933284A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.GCompare.UI", "MG.GCompare.UI\MG.GCompare.UI.csproj", "{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.GCompare.UI.Tests", "MG.GCompare.UI.Tests\MG.GCompare.UI.Tests.csproj", "{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG.Caliburn.Micro", "..\lib\mg.framework\src\MG.Caliburn.Micro\MG.Caliburn.Micro\MG.Caliburn.Micro.csproj", "{21A82ABC-D161-4E7F-B0A9-880AFBB0EC24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,14 +32,6 @@ Global
 		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Release|Any CPU.ActiveCfg = Release|x86
 		{63A0A9B3-ADD8-4658-B88D-32BC4F391533}.Release|Any CPU.Build.0 = Release|x86
-		{97A80A0F-3101-44B7-9821-CF8D81080296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97A80A0F-3101-44B7-9821-CF8D81080296}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97A80A0F-3101-44B7-9821-CF8D81080296}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97A80A0F-3101-44B7-9821-CF8D81080296}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEF4C343-2AC2-498A-8944-14CF2933284A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB5DF4AD-1622-4100-B4C4-9357FF3FD34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,18 +40,9 @@ Global
 		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F2E4F70-899C-482F-A591-BC7DAF62B2E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21A82ABC-D161-4E7F-B0A9-880AFBB0EC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21A82ABC-D161-4E7F-B0A9-880AFBB0EC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21A82ABC-D161-4E7F-B0A9-880AFBB0EC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21A82ABC-D161-4E7F-B0A9-880AFBB0EC24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{97A80A0F-3101-44B7-9821-CF8D81080296} = {6C9D39B1-B59C-485C-9FD3-88610300A85B}
-		{AEF4C343-2AC2-498A-8944-14CF2933284A} = {6C9D39B1-B59C-485C-9FD3-88610300A85B}
-		{21A82ABC-D161-4E7F-B0A9-880AFBB0EC24} = {6C9D39B1-B59C-485C-9FD3-88610300A85B}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = MG.Genetics\MG.Genetics.csproj
