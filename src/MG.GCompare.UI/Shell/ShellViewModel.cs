@@ -38,6 +38,9 @@ namespace MG.GCompare.UI.Shell
         /// <summary>
         /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
         /// </summary>
+        /// <param name="kernel">
+        /// The application kernel.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when <paramref name="kernel"/> is <see langword="null"/>.
         /// </exception>
