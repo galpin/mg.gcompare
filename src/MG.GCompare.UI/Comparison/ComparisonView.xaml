@@ -22,23 +22,19 @@
                            RowDetailsTemplate="{StaticResource Comparison.SnpInfoRowDetailsTemplate}">
         <telerik:RadGridView.Columns>
           <telerik:GridViewDataColumn Header="Identifier"
-                                      DataMemberBinding="{Binding Id, Mode=OneTime}">
-          </telerik:GridViewDataColumn>
+                                      DataMemberBinding="{Binding Path=Id, Mode=OneTime}"/>
           <telerik:GridViewDataColumn Header="Location"
-                                      DataMemberBinding="{Binding Location, Mode=OneTime}">
-          </telerik:GridViewDataColumn>
+                                      DataMemberBinding="{Binding Path=Location, Mode=OneTime}"/>
           <telerik:GridViewDataColumn Header="Position"
-                                      DataMemberBinding="{Binding Position, Mode=OneTime}">
-          </telerik:GridViewDataColumn>
+                                      DataMemberBinding="{Binding Path=Position, Mode=OneTime}"/>
           <telerik:GridViewDataColumn Header="A"
-                                      DataMemberBinding="{Binding GenotypeA, Mode=OneTime}">
-          </telerik:GridViewDataColumn>
+                                      DataMemberBinding="{Binding Path=GenotypeA, Mode=OneTime}"/>
           <telerik:GridViewDataColumn Header="B"
-                                      DataMemberBinding="{Binding GenotypeB, Mode=OneTime}">
-          </telerik:GridViewDataColumn>
-          <telerik:GridViewDataColumn Header="Same"
-                                      DataMemberBinding="{Binding IsSame, Mode=OneTime}">
-          </telerik:GridViewDataColumn>
+                                      DataMemberBinding="{Binding Path=GenotypeB, Mode=OneTime}"/>
+          <telerik:GridViewDataColumn Header="Is Same?"
+                                      DataMemberBinding="{Binding Path=IsSame, Mode=OneTime}"/>
+          <telerik:GridViewDataColumn Header="Is Favourite?"
+                                      DataMemberBinding="{Binding Path=IsFavourite}"/>
         </telerik:RadGridView.Columns>
       </telerik:RadGridView>
       <Border Grid.Row="1"

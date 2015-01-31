@@ -13,7 +13,11 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
+using Caliburn.Micro.MG;
+using MG.GCompare.UI.Comparison.Favourites;
 using MG.GCompare.UI.Mocks;
+using MG.GCompare.UI.Support;
+using Ninject;
 
 namespace MG.GCompare.UI.Shell
 {
@@ -21,15 +25,24 @@ namespace MG.GCompare.UI.Shell
     {
         public ShellViewModelTestConductor()
         {
-            DialogManager = new MockDialogManager();
-            Loader = new MockGenomeModelLoader();
-            Shell = new ShellViewModel(DialogManager.Object, Loader.Object);
+            Shell = new ShellViewModel(MakeKernel());
         }
 
-        public MockDialogManager DialogManager { get; }
-
-        public MockGenomeModelLoader Loader { get; }
-
         public ShellViewModel Shell { get; }
+
+        public MockFavouritesManager Favourites { get; } = new MockFavouritesManager();
+
+        public MockDialogManager DialogManager { get; } = new MockDialogManager();
+
+        public MockGenomeModelLoader Loader { get; } = new MockGenomeModelLoader();
+
+        private StandardKernel MakeKernel()
+        {
+            var kernel = new StandardKernel();
+            kernel.Bind<IDialogManager>().ToConstant(DialogManager.Object);
+            kernel.Bind<IGenomeModelLoader>().ToConstant(Loader.Object);
+            kernel.Bind<IFavouritesManager>().ToConstant(Favourites.Object);
+            return kernel;
+        }
     }
 }

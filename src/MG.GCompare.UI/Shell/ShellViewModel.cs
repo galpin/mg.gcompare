@@ -19,7 +19,9 @@ using Caliburn.Micro;
 using Caliburn.Micro.MG;
 using MG.Common;
 using MG.GCompare.UI.Comparison;
+using MG.GCompare.UI.Comparison.Favourites;
 using MG.GCompare.UI.Support;
+using Ninject;
 
 namespace MG.GCompare.UI.Shell
 {
@@ -30,21 +32,22 @@ namespace MG.GCompare.UI.Shell
     {
         private readonly IDialogManager _dialogManager;
         private readonly IGenomeModelLoader _loader;
+        private readonly IFavouritesManager _favouritesManager;
         private bool _isBusy;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">
-        /// Thrown when <paramref name="dialogManager"/> is <see langword="null"/>.
+        /// Thrown when <paramref name="kernel"/> is <see langword="null"/>.
         /// </exception>
-        public ShellViewModel(IDialogManager dialogManager, IGenomeModelLoader loader)
+        public ShellViewModel(IKernel kernel)
         {
-            Guard.IsNotNull(dialogManager, nameof(dialogManager));
-            Guard.IsNotNull(loader, nameof(loader));
+            Guard.IsNotNull(kernel, nameof(kernel));
 
-            _dialogManager = dialogManager;
-            _loader = loader;
+            _dialogManager = kernel.Get<IDialogManager>();
+            _loader = kernel.Get<IGenomeModelLoader>();
+            _favouritesManager = kernel.Get<IFavouritesManager>();
 
             DisplayName = "MG.GCompare";
         }
@@ -76,6 +79,7 @@ namespace MG.GCompare.UI.Shell
             using (BeginBusy())
             {
                 ActivateItem(new ComparisonViewModel(
+                    _favouritesManager,
                     await _loader.LoadAsync(a),
                     b == null ? null : await _loader.LoadAsync(b)));
             }

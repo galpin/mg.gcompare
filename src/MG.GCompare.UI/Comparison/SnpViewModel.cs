@@ -15,6 +15,7 @@
 
 using System;
 using System.Diagnostics;
+using Caliburn.Micro;
 using MG.Common;
 using MG.Genetics.Model;
 
@@ -23,8 +24,10 @@ namespace MG.GCompare.UI.Comparison
     /// <summary>
     /// Provides a view model for comparison of a single SNP. This class cannot be inherited.
     /// </summary>
-    public class SnpViewModel
+    public sealed class SnpViewModel : PropertyChangedBase
     {
+        private bool _isFavourite;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SnpViewModel"/> class.
         /// </summary>
@@ -83,6 +86,31 @@ namespace MG.GCompare.UI.Comparison
         /// Indicates whether or not the genotype is the same for both <see cref="SnpModel"/> instances.
         /// </summary>
         public bool? IsSame { get; }
+
+        /// <summary>
+        /// Indicates whether or not the SNP is a user-favourite.
+        /// </summary>
+        public bool IsFavourite
+        {
+            get { return _isFavourite; }
+            set
+            {
+                if (value == _isFavourite)
+                {
+                    return;
+                }
+                _isFavourite = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        /// <summary>
+        /// Toggles the <see cref="IsFavourite"/> property.
+        /// </summary>
+        public void ToggleIsFavourite()
+        {
+            IsFavourite = !IsFavourite;
+        }
 
         /// <summary>
         /// Opens a browser window at SNPedia for this SNP.

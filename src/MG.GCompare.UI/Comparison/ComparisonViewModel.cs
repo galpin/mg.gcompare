@@ -14,7 +14,9 @@
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 using System.Collections.Generic;
+using System.ComponentModel;
 using MG.Common;
+using MG.GCompare.UI.Comparison.Favourites;
 using MG.Genetics.Model;
 
 namespace MG.GCompare.UI.Comparison
@@ -24,18 +26,23 @@ namespace MG.GCompare.UI.Comparison
     /// </summary>
     public sealed class ComparisonViewModel : IComparisonViewModel
     {
+        private readonly IFavouritesManager _favouritesManager;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ComparisonViewModel"/> class.
         /// </summary>
+        /// <param name="favouritesManager">The favourites manager.</param>
         /// <param name="a">The first gneome to compare.</param>
         /// <param name="b">The optional second genome to compare, can be <see langword="null"/>.</param>
         /// <exception cref="System.ArgumentNullException">
-        /// Thrown if <paramref name="a"/> is <see langword="null"/>.
+        /// Thrown if <paramref name="favouritesManager"/> or <paramref name="a"/> is <see langword="null"/>.
         /// </exception>
-        public ComparisonViewModel(GenomeModel a, GenomeModel b = null)
+        public ComparisonViewModel(IFavouritesManager favouritesManager, GenomeModel a, GenomeModel b = null)
         {
+            Guard.IsNotNull(favouritesManager, nameof(favouritesManager));
             Guard.IsNotNull(a, nameof(a));
 
+            _favouritesManager = favouritesManager;
             Snp = new SnpViewModelCollection(MakeSnpViewModels(a, b));
         }
 
@@ -44,13 +51,13 @@ namespace MG.GCompare.UI.Comparison
         /// </summary>
         public SnpViewModelCollection Snp { get; }
 
-        private static IEnumerable<SnpViewModel> MakeSnpViewModels(GenomeModel a, GenomeModel b)
+        private IEnumerable<SnpViewModel> MakeSnpViewModels(GenomeModel a, GenomeModel b)
         {
             if (b == null)
             {
                 foreach (var aa in a.Snp)
                 {
-                    yield return new SnpViewModel(aa, null);
+                    yield return MakeSnpViewModel(aa, null);
                 }
                 yield break;
             }
@@ -59,7 +66,7 @@ namespace MG.GCompare.UI.Comparison
             {
                 SnpModel bb;
                 b.Snp.TryGetById(aa.Id, out bb);
-                yield return new SnpViewModel(aa, bb);
+                yield return MakeSnpViewModel(aa, bb);
             }
             // SNP only in genome B.
             foreach (var bb in b.Snp)
@@ -69,8 +76,28 @@ namespace MG.GCompare.UI.Comparison
                 {
                     continue;
                 }
-                yield return new SnpViewModel(null, bb);
+                yield return MakeSnpViewModel(null, bb);
             }
+        }
+
+        private SnpViewModel MakeSnpViewModel(SnpModel aa, SnpModel bb)
+        {
+            var snp = new SnpViewModel(aa, bb)
+            {
+                IsFavourite = _favouritesManager.Get((aa ?? bb).Id)
+            };
+            snp.PropertyChanged += OnSnpPropertyChanged;
+            return snp;
+        }
+
+        private void OnSnpPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "IsFavourite")
+            {
+                return;
+            }
+            var snp = (SnpViewModel)sender;
+            _favouritesManager.Set(snp.Id, snp.IsFavourite);
         }
     }
 }

@@ -5,17 +5,6 @@
                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
                     xmlns:support="clr-namespace:MG.GCompare.UI.Comparison.Support">
 
-  <Style x:Key="Comparison.HyperlinkButton"
-         TargetType="Button">
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="Button">
-          <ContentPresenter />
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
   <!-- http://www.thexamlproject.com/#/artwork/456 -->
   <Geometry x:Key="Comparison.Icons.OpenBrowser">F1 M 28.32,19.68L 28.32,25.92L 3.30002,25.92L 3.30002,8.58002L 10.98,8.58002L 10.98,5.36951L 2.28168,5.36951C 1.64587,5.38486 1.11115,5.59497 0.677368,5.99988C 0.243622,6.40479 0.0178223,6.91232 0,7.52252L 0,27.0658C 0.0178223,27.6769 0.243622,28.1849 0.677368,28.5898C 1.11115,28.9947 1.64587,29.2047 2.28168,29.22L 29.4659,29.22C 30.077,29.2047 30.585,28.9947 30.9898,28.5898C 31.3947,28.1849 31.6047,27.6769 31.62,27.0658L 31.62,19.68L 28.32,19.68 Z M 10.7439,20.7192C 11.014,20.7192 11.3141,20.7192 11.6443,20.7192C 11.9745,20.7192 12.1546,20.7192 12.1846,20.7192C 12.5828,16.3554 14.1756,13.6921 16.9631,12.7294C 19.7505,11.7667 21.3434,11.3791 21.7416,11.5667L 20.3488,18.1868L 32.9161,8.77924L 20.3488,3.05176e-005L 21.6455,5.76004C 16.4428,6.38333 13.2692,8.87653 12.1246,13.2396C 10.98,17.6028 10.5197,20.0959 10.7439,20.7192 Z</Geometry>
   <!-- http://www.thexamlproject.com/#/artwork/367 -->
@@ -34,12 +23,30 @@
             Value="0" />
     <Setter Property="Margin"
             Value="5" />
+    <Setter Property="VerticalAlignment"
+            Value="Center" />
   </Style>
 
-  <Style x:Key="Comparison.Styles.Paths.Favourite"
+  <Style x:Key="Comparison.PathStyles.Standard"
          TargetType="Path">
+    <Setter Property="Margin"
+            Value="5" />
+    <Setter Property="Stretch"
+            Value="Uniform" />
     <Setter Property="Fill"
-            Value="Orange" />
+            Value="Black" />
+  </Style>
+
+  <Style x:Key="Comparison.PathStyles.Favourite"
+         TargetType="Path"
+         BasedOn="{StaticResource Comparison.PathStyles.Standard}">
+    <Style.Triggers>
+      <DataTrigger Binding="{Binding Path=IsFavourite}"
+                   Value="True">
+        <Setter Property="Fill"
+                Value="Orange" />
+      </DataTrigger>
+    </Style.Triggers>
   </Style>
 
   <DataTemplate x:Key="Comparison.SnpInfoRowDetailsTemplate">
@@ -62,9 +69,15 @@
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
           <telerik:RadPathButton PathGeometry="{StaticResource Comparison.Icons.Favourite}"
-                                 PathStyle="{StaticResource Comparison.Styles.Paths.Favourite}"
-                                 Style="{StaticResource Comparison.Styles.RadPathButton}" />
+                                 PathStyle="{StaticResource Comparison.PathStyles.Favourite}"
+                                 ToolTip="Mark as favourite"
+                                 cal:Action.TargetWithoutContext="{Binding}"
+                                 cal:Message.Attach="[Action ToggleIsFavourite]"
+                                 Style="{StaticResource Comparison.Styles.RadPathButton}">
+          </telerik:RadPathButton>
           <telerik:RadPathButton PathGeometry="{StaticResource Comparison.Icons.OpenBrowser}"
+                                 PathStyle="{StaticResource Comparison.PathStyles.Standard}"
+                                 ToolTip="Open in browser"
                                  cal:Message.Attach="[Action OpenBrowser]"
                                  Style="{StaticResource Comparison.Styles.RadPathButton}" />
         </StackPanel>

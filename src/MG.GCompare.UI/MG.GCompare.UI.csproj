@@ -95,7 +95,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppPath.cs" />
     <Compile Include="Comparison\ComparisonViewModel.cs" />
+    <Compile Include="Comparison\Favourites\IFavouritesManager.cs" />
+    <Compile Include="Comparison\Favourites\NamespaceModule.cs" />
+    <Compile Include="Comparison\Favourites\TextFavouriteManager.cs" />
     <Compile Include="Comparison\IComparisonViewModel.cs" />
     <Compile Include="Comparison\SnpViewModel.cs" />
     <Compile Include="Comparison\SnpViewModelCollection.cs" />

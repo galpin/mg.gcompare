@@ -1,4 +1,4 @@
-﻿// Copyright (c) Martin Galpin 2014.
+// Copyright (c) Martin Galpin 2014.
 //  
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -13,24 +13,24 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
-using System.Collections.Generic;
-using Caliburn.Micro.MG;
-using MG.GCompare.UI.Shell;
-using Ninject.Modules;
+using MG.GCompare.UI.Mocks;
+using MG.GCompare.UI.Support;
+using MG.Genetics.Model;
 
-namespace MG.GCompare.UI
+namespace MG.GCompare.UI.Comparison
 {
-    /// <summary>
-    /// Provides the application bootstrapper. This class is cannot be inherited.
-    /// </summary>
-    public sealed class AppBootstrapper : NinjectBootstrapper<IShell>
+    internal sealed class ComparisonViewModelTestConductor
     {
-        /// <inheritdoc/>
-        protected override IEnumerable<NinjectModule> GetModules()
+        public ComparisonViewModelTestConductor(GenomeModel a = null, GenomeModel b = null)
         {
-            yield return new NamespaceModule();
-            yield return new Comparison.Favourites.NamespaceModule();
-            yield return new Support.NamespaceModule();
+            View = new ComparisonViewModel(
+                Favourites.Object,
+                a ?? TestGenomeModel.Create(),
+                b);
         }
+
+        public ComparisonViewModel View { get; }
+
+        public MockFavouritesManager Favourites { get; } = new MockFavouritesManager();
     }
 }

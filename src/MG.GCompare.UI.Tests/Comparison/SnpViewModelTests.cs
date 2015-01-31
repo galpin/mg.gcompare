@@ -97,5 +97,26 @@ namespace MG.GCompare.UI.Comparison
 
             Assert.Throws<ArgumentOutOfRangeException>(() => new SnpViewModel(a, b));
         }
+
+        [Fact]
+        public void ToggleFavourite_UpdatesIsFavouriteProperty_Test()
+        {
+            var model = new SnpViewModel(TestSnpModel.Create(), null);
+            var expected = !model.IsFavourite;
+
+            model.ToggleIsFavourite();
+
+            Assert.Equal(expected, model.IsFavourite);
+        }
+
+        [Fact]
+        public void ToggleFavourite_NotifiesOfPropertyChangedForIsFavourite_Test()
+        {
+            var model = new SnpViewModel(TestSnpModel.Create(), null);
+
+            model.CreatePropertyChangedObserver()
+                 .ExpectPropertyChanged(x => x.IsFavourite)
+                 .Verify(x => x.ToggleIsFavourite());
+        }
     }
 }

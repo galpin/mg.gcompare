@@ -15,7 +15,6 @@
 
 using System.IO;
 using System.Linq;
-using Caliburn.Micro.MG;
 using MG.GCompare.UI.Comparison;
 using MG.GCompare.UI.Support;
 using Moq;
@@ -28,10 +27,7 @@ namespace MG.GCompare.UI.Shell
         [Fact]
         public void Ctor_CorrectlyInitializesMembers_Test()
         {
-            var dialogManager = new Mock<IDialogManager>().Object;
-            var loader = new Mock<IGenomeModelLoader>().Object;
-
-            var actual = new ShellViewModel(dialogManager, loader);
+            var actual = new ShellViewModelTestConductor().Shell;
 
             Assert.Equal("MG.GCompare", actual.DisplayName);
         }
