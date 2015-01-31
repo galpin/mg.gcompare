@@ -44,11 +44,13 @@ namespace MG.GCompare.UI.Comparison.Favourites
             _favourites = new HashSet<string>(Load(path));
         }
 
+        /// <inheritdoc/>
         public bool Get(string id)
         {
             return _favourites.Contains(id.ToUpperInvariant());
         }
 
+        /// <inheritdoc/>
         public void Set(string id, bool favourite)
         {
             var idAsUpper = id.ToUpperInvariant();
