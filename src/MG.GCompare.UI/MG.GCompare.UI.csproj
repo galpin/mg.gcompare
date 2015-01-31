@@ -96,9 +96,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Comparison\ComparisonViewModel.cs" />
-    <Compile Include="Comparison\DisplayMode.cs" />
     <Compile Include="Comparison\IComparisonViewModel.cs" />
-    <Compile Include="Comparison\SnpCollectionViewSource.cs" />
     <Compile Include="Comparison\SnpViewModel.cs" />
     <Compile Include="Comparison\SnpViewModelCollection.cs" />
     <Compile Include="Comparison\Support\WebBrowserAttachedProperties.cs" />

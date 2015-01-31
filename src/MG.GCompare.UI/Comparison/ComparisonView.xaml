@@ -6,23 +6,16 @@
   <Grid Margin="10 5 10 5"
         Background="{telerik:VisualStudio2013Resource ResourceKey=PrimaryBrush}">
     <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <telerik:RadComboBox x:Name="DisplayMode"
-                         Grid.Row="0"
-                         ToolTip="Chromosome"
-                         HorizontalAlignment="Left"
-                         ItemsSource="{Binding Source={StaticResource Comparison.DisplayModeDataProvider}}"
-                         SelectedIndex="0" />
-    <Grid Grid.Row="1">
+    <Grid Grid.Row="0">
       <Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
       <telerik:RadGridView x:Name="GridView"
                            Grid.Row="0"
-                           Margin="0 5 0 5"
+                           Margin="0 0 0 5"
                            ItemsSource="{Binding Path=Snp}"
                            AutoGenerateColumns="False"
                            ShowGroupPanel="True"
