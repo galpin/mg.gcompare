@@ -1,14 +1,13 @@
-﻿<Window x:Class="MG.GCompare.UI.Shell.ShellView"
+﻿<!-- Copyright (c) Martin Galpin 2015. -->
+<Window x:Class="MG.GCompare.UI.Shell.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:cal="http://www.caliburnproject.org"
-        mc:Ignorable="d"
         Title="{Binding DisplayName}"
-        Height="600"
-        Width="800">
+        Height="768"
+        Width="1024"
+        WindowStartupLocation="CenterScreen">
   <telerik:RadBusyIndicator IsBusy="{Binding IsBusy}"
                             IsIndeterminate="True">
     <DockPanel LastChildFill="True"

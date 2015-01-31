@@ -1,12 +1,8 @@
-﻿<UserControl x:Class="MG.GCompare.UI.Comparison.ComparisonView"
+﻿<!-- Copyright (c) Martin Galpin 2015. -->
+<UserControl x:Class="MG.GCompare.UI.Comparison.ComparisonView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-             mc:Ignorable="d"
-             d:DesignHeight="300"
-             d:DesignWidth="300">
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
   <Grid Margin="10 5 10 5"
         Background="{telerik:VisualStudio2013Resource ResourceKey=PrimaryBrush}">
     <Grid.RowDefinitions>
@@ -56,7 +52,7 @@
               BorderBrush="#FF848484"
               BorderThickness="1,0">
         <telerik:DetailsPresenter x:Name="DetailsPresenter"
-                                  Height="120"
+                                  Height="250"
                                   DetailsProvider="{Binding ElementName=GridView, Path=RowDetailsProvider}" />
       </Border>
     </Grid>
