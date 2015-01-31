@@ -6,7 +6,7 @@ Features include:
 
 * Load one or two 23andme datasets;
 * Sort, group and filtering by identifier, chromosome and genotype;
-* Browse [SNPedia](http://www.snpedia) entries for selected SNP;
+* Browse [SNPedia](http://www.snpedia.com) entries for selected SNP;
 * Mark interesting SNP as favourites.
 
 Thanks!
