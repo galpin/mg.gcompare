@@ -47,6 +47,7 @@
                            ItemsSource="{Binding Source={StaticResource SnpCollectionViewSource}}"
                            AutoGenerateColumns="False"
                            ShowGroupPanel="True"
+                           FrozenColumnsSplitterVisibility="Collapsed"
                            RowDetailsTemplate="{StaticResource Comparison.SnpInfoRowDetailsTemplate}">
         <telerik:RadGridView.Columns>
           <telerik:GridViewDataColumn Header="Identifier"
