@@ -101,8 +101,10 @@
     <Compile Include="Comparison\Favourites\NamespaceModule.cs" />
     <Compile Include="Comparison\Favourites\TextFavouriteManager.cs" />
     <Compile Include="Comparison\IComparisonViewModel.cs" />
+    <Compile Include="Comparison\SnpCollectionViewSource.cs" />
     <Compile Include="Comparison\SnpViewModel.cs" />
     <Compile Include="Comparison\SnpViewModelCollection.cs" />
+    <Compile Include="Comparison\Support\StringExtensions.cs" />
     <Compile Include="Comparison\Support\WebBrowserAttachedProperties.cs" />
     <Compile Include="Shell\NamespaceModule.cs" />
     <Compile Include="Shell\ShellViewModel.cs" />

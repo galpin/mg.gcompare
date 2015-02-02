@@ -2,13 +2,41 @@
 <UserControl x:Class="MG.GCompare.UI.Comparison.ComparisonView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:comparison="clr-namespace:MG.GCompare.UI.Comparison">
   <Grid Margin="10 5 10 5"
         Background="{telerik:VisualStudio2013Resource ResourceKey=PrimaryBrush}">
+    <Grid.Resources>
+      <comparison:SnpCollectionViewSource x:Key="SnpCollectionViewSource"
+                                          Source="{Binding Path=Snp}"
+                                          FilterText="{Binding ElementName=FilterText, Path=Text}"
+                                          ShowFavourites="{Binding ElementName=ShowFavourites, Path=IsChecked}" />
+    </Grid.Resources>
     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <Grid Grid.Row="0">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <StackPanel Grid.Column="0"
+                  Orientation="Horizontal">
+        <telerik:RadComboBox Margin="0,5,5,5" />
+      </StackPanel>
+      <StackPanel Grid.Column="1"
+                  Orientation="Horizontal"
+                  HorizontalAlignment="Right">
+        <CheckBox x:Name="ShowFavourites"
+                  Margin="5">Show Favourites</CheckBox>
+        <telerik:RadWatermarkTextBox x:Name="FilterText"
+                                     Margin="5,5,0,5"
+                                     Width="200"
+                                     WatermarkContent="Search" />
+      </StackPanel>
+    </Grid>
+    <Grid Grid.Row="1">
       <Grid.RowDefinitions>
         <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
@@ -16,25 +44,23 @@
       <telerik:RadGridView x:Name="GridView"
                            Grid.Row="0"
                            Margin="0 0 0 5"
-                           ItemsSource="{Binding Path=Snp}"
+                           ItemsSource="{Binding Source={StaticResource SnpCollectionViewSource}}"
                            AutoGenerateColumns="False"
                            ShowGroupPanel="True"
                            RowDetailsTemplate="{StaticResource Comparison.SnpInfoRowDetailsTemplate}">
         <telerik:RadGridView.Columns>
           <telerik:GridViewDataColumn Header="Identifier"
-                                      DataMemberBinding="{Binding Path=Id, Mode=OneTime}"/>
+                                      DataMemberBinding="{Binding Path=Id, Mode=OneTime}" />
           <telerik:GridViewDataColumn Header="Location"
-                                      DataMemberBinding="{Binding Path=Location, Mode=OneTime}"/>
+                                      DataMemberBinding="{Binding Path=Location, Mode=OneTime}" />
           <telerik:GridViewDataColumn Header="Position"
-                                      DataMemberBinding="{Binding Path=Position, Mode=OneTime}"/>
+                                      DataMemberBinding="{Binding Path=Position, Mode=OneTime}" />
           <telerik:GridViewDataColumn Header="A"
-                                      DataMemberBinding="{Binding Path=GenotypeA, Mode=OneTime}"/>
+                                      DataMemberBinding="{Binding Path=GenotypeA, Mode=OneTime}" />
           <telerik:GridViewDataColumn Header="B"
-                                      DataMemberBinding="{Binding Path=GenotypeB, Mode=OneTime}"/>
+                                      DataMemberBinding="{Binding Path=GenotypeB, Mode=OneTime}" />
           <telerik:GridViewDataColumn Header="Is Same?"
-                                      DataMemberBinding="{Binding Path=IsSame, Mode=OneTime}"/>
-          <telerik:GridViewDataColumn Header="Is Favourite?"
-                                      DataMemberBinding="{Binding Path=IsFavourite}"/>
+                                      DataMemberBinding="{Binding Path=IsSame, Mode=OneTime}" />
         </telerik:RadGridView.Columns>
       </telerik:RadGridView>
       <Border Grid.Row="1"
