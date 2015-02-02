@@ -81,6 +81,7 @@ namespace MG.GCompare.UI.Shell
             var b = OpenFile("Open Genome B");
             using (BeginBusy())
             {
+                ActivateItem(null);
                 ActivateItem(new ComparisonViewModel(
                     _favouritesManager,
                     await _loader.LoadAsync(a),

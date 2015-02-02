@@ -140,6 +140,7 @@ namespace MG.GCompare.UI.Shell
 
             conductor.Shell.CreatePropertyChangedObserver()
                            .ExpectPropertyChanged(x => x.IsBusy)
+                           .ExpectPropertyChanged(x => x.ActiveItem) // null.
                            .ExpectPropertyChanged(x => x.ActiveItem)
                            .ExpectPropertyChanged(x => x.IsBusy)
                            .Verify(x => x.Open());
