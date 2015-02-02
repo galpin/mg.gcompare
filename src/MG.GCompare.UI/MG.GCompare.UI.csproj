@@ -97,6 +97,7 @@
     </ApplicationDefinition>
     <Compile Include="AppPath.cs" />
     <Compile Include="Comparison\ComparisonViewModel.cs" />
+    <Compile Include="Comparison\DisplayMode.cs" />
     <Compile Include="Comparison\Favourites\IFavouritesManager.cs" />
     <Compile Include="Comparison\Favourites\NamespaceModule.cs" />
     <Compile Include="Comparison\Favourites\TextFavouriteManager.cs" />

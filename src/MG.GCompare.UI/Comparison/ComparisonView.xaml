@@ -23,7 +23,9 @@
       </Grid.ColumnDefinitions>
       <StackPanel Grid.Column="0"
                   Orientation="Horizontal">
-        <telerik:RadComboBox Margin="0,5,5,5" />
+        <telerik:RadComboBox Margin="0,5,5,5"
+                             SelectedIndex="0"
+                             ItemsSource="{Binding Source={StaticResource Comparison.DisplayModeDataProvider}}"/>
       </StackPanel>
       <StackPanel Grid.Column="1"
                   Orientation="Horizontal"
