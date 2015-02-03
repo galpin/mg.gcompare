@@ -88,6 +88,7 @@
           <telerik:RadPathButton PathGeometry="{StaticResource Comparison.Icons.OpenBrowser}"
                                  PathStyle="{StaticResource Comparison.PathStyles.Standard}"
                                  ToolTip="Open in browser"
+                                 cal:Action.TargetWithoutContext="{Binding}"
                                  cal:Message.Attach="[Action OpenBrowser]"
                                  Style="{StaticResource Comparison.Styles.RadPathButton}" />
         </StackPanel>
