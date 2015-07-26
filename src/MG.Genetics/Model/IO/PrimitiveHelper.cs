@@ -89,7 +89,7 @@ namespace MG.Genetics.Model.IO
         private static IEnumerable<SnpModel> ReadSnp(string path)
         {
             return File.ReadLines(path)
-                       .Where(x => !x.StartsWith("#"))
+                       .Where(ShouldReadLine)
                        .Select(x =>
                        {
                            var fields = x.Split('\t');
@@ -99,6 +99,11 @@ namespace MG.Genetics.Model.IO
                                Int32.Parse(fields[2]),
                                fields[3]);
                        });
+        }
+
+        private static bool ShouldReadLine(string line)
+        {
+            return !line.StartsWith("#") && !String.IsNullOrWhiteSpace(line);
         }
     }
 }

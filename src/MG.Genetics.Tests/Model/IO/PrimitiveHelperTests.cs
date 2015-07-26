@@ -49,6 +49,30 @@ namespace MG.Genetics.Model.IO
             }
         }
 
+        [Fact]
+        public void Load_IgnoresComments_Test()
+        {
+            using (var writer = new RawDataWriter(
+                "#rs12564807	1	734462	AA",
+                "#rs3131972	X	752721	GG"))
+            {
+                var genome = PrimitiveHelper.Load(writer.FullPath);
+
+                Assert.Empty(genome.Snp);
+            }
+        }
+
+        [Fact]
+        public void Load_IgnoresEmptyLines_Test()
+        {
+            using (var writer = new RawDataWriter(" "))
+            {
+                var genome = PrimitiveHelper.Load(writer.FullPath);
+
+                Assert.Empty(genome.Snp);
+            }
+        }
+
         private static void AssertSnp(
             SnpModel snp,
             string expectedId,
