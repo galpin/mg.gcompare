@@ -9,8 +9,4 @@ Features include:
 * Browse [SNPedia](http://www.snpedia.com) entries for selected SNP;
 * Mark interesting SNP as favourites.
 
-Thanks!
-
-Martin Galpin ([galpin+github@gmail.com](mailto:galpin+github@gmail.com))
-
 ![MG.GCompare](/screenshot.png?raw=true)
